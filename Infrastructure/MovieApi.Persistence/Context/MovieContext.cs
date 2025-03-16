@@ -8,11 +8,13 @@ using MovieApi.Domain.Entities;
 
 namespace MovieApi.Persistence.Context
 {
-    public class MovieContext: DbContext
+    public class MovieContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=");
+            optionsBuilder.UseSqlServer(
+                "Data Source=DESKTOP-PKEIAQV\\SQLEXPRESS;Integrated Security=True;Initial Catalog=MovieApi;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"
+            );
         }
 
         public DbSet<Category> Categories { get; set; }
@@ -20,6 +22,5 @@ namespace MovieApi.Persistence.Context
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Cast> Casts { get; set; }
-
     }
 }
